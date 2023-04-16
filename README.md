@@ -7,10 +7,12 @@ This repository is to depict the use case of Azure Kubernetes Fleet Manager (Pre
 The diagram shows the use case along with what is provisioned from this script (meant for demonstration purposes)
 
 
+<pre class="notranslate">
 <code> cp tfvars .tfvars
 terraform init --upgrade
 terraform apply -var-file=.tfvars
 </code>
+</pre>
 
 
 <h3> Role Assignments</h3>
