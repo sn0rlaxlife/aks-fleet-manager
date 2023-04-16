@@ -3,47 +3,35 @@
 
 ## Reference https://learn.microsoft.com/en-us/azure/templates/microsoft.containerservice/fleets?pivots=deployment-language-terraform
 
-resource "azapi_resource" "aks-fleet-west" {
-  type = "Microsoft.ContainerService/fleets@2022-09-02-preview"
-  name = "aks-fleet-west"
-  location = var.location_one
-  parent_id = azurerm_resource_group.this.id
+resource "azurerm_kubernetes_fleet_manager" "aks-fleet-west" {
+   
+  hub_profile {
+    dns_prefix = "fleet-west"
+  } 
+
+  location		= var.location_one
+  name    		= "aks-fleet-west"
+  resource_group_name	= azurerm_resource_group.this.name
   tags = {
-    tagName1 = "production-aks1"
-    tagName2 = "production-aksfleet"
+    tagName1 	= "production-aks1"
+    tagName2    = "production-aksfleet"
   }
-
-
-  body = jsonencode({
-    properties = {
-      hubProfile = {
-        dnsPrefix = "aks-fleet-west"
-      }
-    }
-  })
 }
 
 
 #https://learn.microsoft.com/en-us/azure/templates/microsoft.containerservice/fleets/members?pivots=deployment-language-terraform
 
-resource "azapi_resource" "aks-hub-1" {
-  type = "Microsoft.ContainerService/fleets/members@2022-09-02-preview"
-  name = "aks-hub1"
-  parent_id = azapi_resource.fleet.id
-  body = jsonencode({
-    properties = {
-      clusterResourceId = module.aks-east.aks_id
-    }
-  })
+
+resource "azurerm_kubernetes_fleet_manager" "aks-hub-1" {
+
+  location            = var.location_one
+  name                = "aks-hub1"
+  resource_group_name = azurerm_resource_group.rg-fleet.name
 }
 
-resource "azapi_resource" "aks-hub-2" {
-  type = "Microsoft.ContainerService/fleets/members@2022-09-02-preview"
-  name = "aks-hub2"
-  parent_id = azapi_resource.fleet.id
-  body = jsonencode({
-    properties = {
-      clusterResourceId = module.aks-west.aks_id
-    }
-  })
+resource "azurerm_kubernetes_fleet_manager" "aks-hub-2" {
+  
+  location             = var.location_two
+  name 	               = "aks-hub2"  
+  resource_group_name  = azurerm_resource_group.rg-fleet.name
 }

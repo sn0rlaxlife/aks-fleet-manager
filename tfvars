@@ -1,0 +1,1 @@
+agents_size = "Standard_a4_v2"
