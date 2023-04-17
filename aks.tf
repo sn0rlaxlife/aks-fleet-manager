@@ -21,7 +21,7 @@ module "aks-east" {
   net_profile_dns_service_ip      = "10.0.0.10"
   net_profile_service_cidr        = "10.0.0.0/16"
   log_analytics_workspace_enabled = "false"
-  depends_on                      = [module.vnet_one]
+  depends_on                      = [module.vnet-east]
 }
 
 module "aks-west" {
