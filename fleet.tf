@@ -23,14 +23,18 @@ resource "azurerm_kubernetes_fleet_manager" "aks-fleet-west" {
 
 
 resource "azurerm_kubernetes_fleet_manager" "aks-hub-1" {
-
+  hub_profile {
+    dns_prefix = "fleet-west"
+  } 
   location            = var.location_one
   name                = "aks-hub1"
   resource_group_name = azurerm_resource_group.rg-fleet.name
 }
 
 resource "azurerm_kubernetes_fleet_manager" "aks-hub-2" {
-  
+  hub_profile {
+    dns_prefix = "fleet-west"
+  } 
   location             = var.location_two
   name 	               = "aks-hub2"  
   resource_group_name  = azurerm_resource_group.rg-fleet.name
