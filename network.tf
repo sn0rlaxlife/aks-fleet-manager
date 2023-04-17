@@ -7,7 +7,7 @@ module "vnet-east" {
             address_prefixes = ["10.50.0.0/16"]
         }
     }
-    virtual_network_address_space = ["10.50.1.0/16"]
+    virtual_network_address_space = ["10.50.0.0/16"]
     virtual_network_location      = var.location_one
     virtual_network_name          = "fleet-virtual-network"
 }
@@ -21,7 +21,7 @@ module "vnet_west" {
             address_prefixes = ["10.50.0.0/16"]
         }
     }
-    virtual_network_address_space = ["10.51.0.0/16"]
+    virtual_network_address_space = ["10.50.0.0/16"]
     virtual_network_location      = var.location_two
     virtual_network_name          = "fleet-virtual-network-1"
 }
