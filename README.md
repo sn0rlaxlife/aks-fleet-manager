@@ -1,5 +1,5 @@
 # aks-fleet-manager
-
+[![tfsec](https://github.com/sn0rlaxlife/aks-fleet-manager/actions/workflows/tfsec.yml/badge.svg?branch=main)](https://github.com/sn0rlaxlife/aks-fleet-manager/actions/workflows/tfsec.yml)
 This repository is to depict the use case of Azure Kubernetes Fleet Manager (Preview) as of 4/14/2023
 
 <b>AKS is provisioned via TF</b>
