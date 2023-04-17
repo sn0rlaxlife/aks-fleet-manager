@@ -34,7 +34,7 @@ module "aks-west" {
   prefix                          = "fleet2"
   network_plugin                  = "azure"
   vnet_subnet_id                  = lookup(module.vnet_west.vnet_subnets_name_id, "subnet0")
-  sku_tier                        = "Paid" # defaults to Free
+  sku_tier                        = "Standard" # defaults to Free
   enable_auto_scaling             = true
   agents_min_count                = 1
   agents_max_count                = 5
