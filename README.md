@@ -34,6 +34,6 @@ terraform apply -var-file=.tfvars
 <pre class="notranslate">
 <code>
 az fleet get-credentials --resource-group ${GROUP} --name ${FLEET}
-
+</code>
 
 <h3> Role Assignments</h3>
