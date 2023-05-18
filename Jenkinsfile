@@ -34,3 +34,4 @@ pipeline {
        echo "Send notifications for result: ${currentBuild.result}"
     }
 }
+}
