@@ -9,10 +9,9 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/sn0rlaxlife/aks-fleet-manager']]])
             }
         }
-
         stage('Scan with tfsec') {
             steps {
-                sh 'tfsec .'
+                sh 'tfsec . --no-color'
             }
         }
     }
