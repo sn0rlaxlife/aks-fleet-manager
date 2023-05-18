@@ -13,6 +13,23 @@ pipeline {
             steps {
                 sh 'tfsec . --no-color'
             }
+            
+            post {
+              success {
+                  // publish html
+                publishHTML target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: true,
+                    reportDir: 'coverage'
+                    reportFiles: 'index.html',
+                    reportName: 'tfsec'
+                  ]
+              }
         }
+    }
+    post {
+      always {
+       echo "Send notifications for result: ${currentBuild.result}"
     }
 }
