@@ -12,21 +12,7 @@ pipeline {
         stage('Scan with tfsec') {
             steps {
                 sh 'tfsec . --no-color'
-            }
-            
-           post {
-             success {
-               // publish html
-               publishHTML target: [
-                  allowMissing: false,
-                  alwaysLinkToLastBuild: false,
-                  keepAll: true,
-                  reportDir: 'coverage',
-                  reportFiles: 'index.html',
-                  reportName: 'RCov Report'
-                ]
-             }
-           }     
+            }   
         }
     }
     post {
