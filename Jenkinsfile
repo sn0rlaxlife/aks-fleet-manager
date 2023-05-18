@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+   security:
+    gitHostKeyVerificationConfiguration:
+      sshHostKeyVerificationStrategy: "acceptFirstConnectionStrategy"
     stages {
         stage('Checkout') {
             steps {
