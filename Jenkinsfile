@@ -26,6 +26,7 @@ pipeline {
                     reportName: 'tfsec'
                   ]
               }
+            }        
         }
     }
     post {
