@@ -13,7 +13,7 @@ resource "azurerm_kubernetes_fleet_manager" "aks-fleet-west" {
   name    		= "aks-fleet-west"
   resource_group_name	= azurerm_resource_group.this.name
   tags = {
-    tagName1 	= "production-aks1"
+    tagName1 	= "production-aks10"
     tagName2    = "production-aksfleet"
   }
 }
