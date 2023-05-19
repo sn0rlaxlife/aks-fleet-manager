@@ -1,8 +1,7 @@
 pipeline {
     agent {
-        label 'label'
-        }
-
+        
+    }
     stages {
         stage('Checkout') {
             steps {
