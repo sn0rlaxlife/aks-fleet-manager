@@ -8,11 +8,7 @@ pipeline {
             }
         }
 
-        stage('Run tfsec') {
-            agent {
-                label 'label'
-            }
-
+        stage('Run tfsec') {        
             steps {
                 sh 'tfsec . --format=html > tfsec_output.html'
             }
