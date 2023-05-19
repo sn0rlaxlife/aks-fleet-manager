@@ -10,7 +10,7 @@ pipeline {
 
         stage('Run tfsec') {        
             steps {
-                sh 'tfsec . --format=html > tfsec_output.html'
+                sh 'tfsec . --no-color'
             }
         }
     }
