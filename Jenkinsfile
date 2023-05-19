@@ -1,7 +1,6 @@
 pipeline {
-    agent {
-        
-    }
+    agent any
+
     stages {
         stage('Checkout') {
             steps {
@@ -15,15 +14,17 @@ pipeline {
             }
 
             steps {
-                sh 'tfsec . > tfsec-report.txt'
-            }
-        }
-
-        stage('Generate HTML report') {
-            steps {
-                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: '.', reportFiles: 'tfsec-report.txt', reportName: 'TFSec Report'])
+                sh 'tfsec . --format=html > tfsec_output.html'
             }
         }
     }
+
+    post {
+        always {
+            // Archive the HTML report
+            archiveArtifacts artifacts: 'tfsec_output.html', fingerprint: true
+        }
+    }
 }
+
 
